@@ -1,0 +1,9 @@
+DESEMBOLSO RCDATA ".\relatorio\Desembolso.fr3"
+DESEMBOLSOXLS RCDATA ".\relatorio\DesembolsoXLS.fr3"
+MOVCONTA RCDATA ".\relatorio\MOVCONTA.fr3"
+MOVCONTAXLS RCDATA ".\relatorio\MOVCONTAXLS.fr3"
+LUCROPRES RCDATA ".\relatorio\lucropresumido.fr3"
+LUCROPRESXLS RCDATA ".\relatorio\lucropresumidoXLS.fr3"
+FATURAM RCDATA ".\relatorio\Faturamento.fr3"
+FATURAMXLS RCDATA ".\relatorio\FaturamentoXLS.fr3"
+

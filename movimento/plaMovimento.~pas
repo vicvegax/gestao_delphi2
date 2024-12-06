@@ -1,0 +1,1078 @@
+unit plaMovimento;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxEdit, cxNavigator, dxDateRanges, Data.DB, cxDBData,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  cxGridLevel, cxClasses, cxGridCustomView, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, Vcl.StdCtrls,
+  cxContainer, Vcl.ComCtrls, dxCore, cxDateUtils, cxTextEdit, cxMaskEdit,
+  cxDropDownEdit, cxCalendar, DateUtils, dxScrollbarAnnotations, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
+  cxCurrencyEdit, cxLabel, strUtils;
+
+type
+  TfplaMov = class(TForm)
+    gviewMov: TcxGridDBTableView;
+    glevelMov: TcxGridLevel;
+    gridMov: TcxGrid;
+    DSMOV: TDataSource;
+    Panel1: TPanel;
+    btAvulso: TButton;
+    gviewMovdt_emi: TcxGridDBColumn;
+    gvmIDUNI: TcxGridDBColumn;
+    gvmIDEVE: TcxGridDBColumn;
+    gvmIDPES: TcxGridDBColumn;
+    gvmCOMPT: TcxGridDBColumn;
+    gvmVALOR: TcxGridDBColumn;
+    gvmDTVEN: TcxGridDBColumn;
+    gviewMovdt_bxa: TcxGridDBColumn;
+    gvmDESCR: TcxGridDBColumn;
+    gviewMovdt_atr: TcxGridDBColumn;
+    gviewMovcd_mov: TcxGridDBColumn;
+    gvmOBS: TcxGridDBColumn;
+    gvmSit: TcxGridDBColumn;
+    gvmNTREG: TcxGridDBColumn;
+    gviewMovdes_inv: TcxGridDBColumn;
+    Panel2: TPanel;
+    Label1: TLabel;
+    edDTINI: TcxDateEdit;
+    edDTFIM: TcxDateEdit;
+    btEfetivar: TButton;
+    Label2: TLabel;
+    Label3: TLabel;
+    cbIDCNT: TcxLookupComboBox;
+    btFiltra: TButton;
+    gvmIDTPD: TcxGridDBColumn;
+    btExcluir: TButton;
+    Label4: TLabel;
+    edSDANT: TcxCurrencyEdit;
+    edSDATU: TcxCurrencyEdit;
+    Label5: TLabel;
+    gviewMovColumn1: TcxGridDBColumn;
+    gvmNRDOC: TcxGridDBColumn;
+    gvmBANCO: TcxGridDBColumn;
+    gvmAGENCIA: TcxGridDBColumn;
+    gvmCONTA: TcxGridDBColumn;
+    gvmTipo: TcxGridDBColumn;
+    btAlterar: TButton;
+    btParcela: TButton;
+    gviewMovColumn7: TcxGridDBColumn;
+    gviewMovColumn8: TcxGridDBColumn;
+    gviewMovColumn9: TcxGridDBColumn;
+    gviewMovColumn10: TcxGridDBColumn;
+    btRelDesembolso: TButton;
+    gvmUF: TcxGridDBColumn;
+    btRelConta: TButton;
+    Label7: TLabel;
+    edTOTC: TcxCurrencyEdit;
+    Label8: TLabel;
+    edTOTD: TcxCurrencyEdit;
+    btEmConta: TButton;
+    btEstornar: TButton;
+    gviewMovColumn2: TcxGridDBColumn;
+    Label9: TLabel;
+    edSDPROJ: TcxCurrencyEdit;
+    colDTENTREG: TcxGridDBColumn;
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btAvulsoClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure QYMOVAfterScroll(DataSet: TDataSet);
+    procedure btEfetivarClick(Sender: TObject);
+    procedure btExcluirClick(Sender: TObject);
+    procedure gviewMovDblClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure gvmVALORCustomDrawCell(Sender: TcxCustomGridTableView;
+      ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
+      var ADone: Boolean);
+    procedure gviewMovCustomDrawCell(Sender: TcxCustomGridTableView;
+      ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
+      var ADone: Boolean);
+    procedure gvmNTREGCustomDrawCell(Sender: TcxCustomGridTableView;
+      ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
+      var ADone: Boolean);
+    procedure edSALDOPropertiesChange(Sender: TObject);
+    procedure btAlterarClick(Sender: TObject);
+    procedure btParcelaClick(Sender: TObject);
+    procedure gviewMovColumn10GetDataText(Sender: TcxCustomGridTableItem;
+      ARecordIndex: Integer; var AText: string);
+    procedure gvmSaldoGetDataText(Sender: TcxCustomGridTableItem;
+      ARecordIndex: Integer; var AText: string);
+    procedure btRelDesembolsoClick(Sender: TObject);
+    procedure gviewMovColumn2PropertiesEditValueChanged(Sender: TObject);
+    procedure btRelContaClick(Sender: TObject);
+    procedure gvcSALDOCustomDrawCell(Sender: TcxCustomGridTableView;
+      ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
+      var ADone: Boolean);
+    procedure gvmSitCustomDrawCell(Sender: TcxCustomGridTableView;
+      ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
+      var ADone: Boolean);
+    procedure edDTINIPropertiesEditValueChanged(Sender: TObject);
+    procedure edDTFIMPropertiesEditValueChanged(Sender: TObject);
+    procedure gvmVALORCustomDrawFooterCell(Sender: TcxGridTableView;
+      ACanvas: TcxCanvas; AViewInfo: TcxGridColumnHeaderViewInfo;
+      var ADone: Boolean);
+    procedure btEstornarClick(Sender: TObject);
+    procedure btEmContaClick(Sender: TObject);
+    procedure btFiltraClick(Sender: TObject);
+    procedure gviewMovColumn2CustomDrawCell(Sender: TcxCustomGridTableView;
+      ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
+      var ADone: Boolean);
+    procedure cbIDCNTPropertiesEditValueChanged(Sender: TObject);
+  private
+    { Private declarations }
+    //var
+      //totalAcumulado: Double;
+    procedure efetivaSimples;
+    procedure efetivaLote;
+    procedure Filtra(id: Integer = 0);
+  public
+    { Public declarations }
+  end;
+
+var
+  fplaMov: TfplaMov;
+
+implementation
+
+{$R *.dfm}
+
+uses modDados, lanMovimento, modFuncoes, bxaMovimento, lanParcela,
+  relConta, relDesembolso, sinalConta, bxaLote;
+
+procedure TfplaMov.btAlterarClick(Sender: TObject);
+var
+  id: integer;
+  ok: boolean;
+begin
+
+  if DM.qymov.FieldByName('st_mov').AsString = cMovLiquidado then begin
+    with TflanMov.Create(Self,0) do begin
+      ShowModal;
+      Free;
+    end;
+    //MsgErro('Este Registro não pode ser Alterado! Ele precisa ser Estornado primeiro.');
+    //Exit;
+  end;
+
+  if not btAlterar.Enabled then exit;
+//  DM.qymov.DisableControls;
+  DM.qymov.AfterScroll:= nil;
+  DM.qymov.OnCalcFields:= nil;
+  id:= DM.qymov.FieldByName('id').AsInteger;
+  with TflanMov.Create(Self, modoAlt, DM.qymov.FieldByName('tp_mov').AsString[1], 0,
+    cbIDCNT.EditValue,
+    0,
+    0,
+    0) do begin
+    { Permitido a partir de 02/10/2023
+    if DM.qymov.FieldByName('tp_mov').AsString <> cTipoAvulso then begin
+      edIDUNI.TabStop:= False;
+      edIDUNI.ReadOnly:= True;
+
+      edPTUNI.TabStop:= False;
+      edPTUNI.ReadOnly:= True;
+
+      cbIDUNI.TabStop:= False;
+      cbIDUNI.Properties.ReadOnly:= True;
+
+      //
+      edIDEVE.TabStop:= False;
+      edIDEVE.ReadOnly:= True;
+
+      cbIDEVE.TabStop:= False;
+      cbIDEVE.Properties.ReadOnly:= True;
+      //
+    end;
+    }
+    ok:=(ShowModal = mrOk);
+    //else
+    Free;
+  end;
+//  DM.qymov.EnableControls;
+  if ok then filtra(id)
+  else begin
+    DM.qymov.OnCalcFields:= DM.QYMOVCalcFields;
+    DM.qymov.AfterScroll:= QYMOVAfterScroll;
+  end;
+  //DM.qymov.Locate('id', id, []);
+
+end;
+
+procedure TfplaMov.btEfetivarClick(Sender: TObject);
+var
+  qtd: integer;
+begin
+  if not btEfetivar.Enabled then exit;
+
+  qtd:= gviewMov.Controller.SelectedRowCount;
+  if qtd > 0 then begin
+    if qtd> 1 then efetivaLote
+    else efetivaSimples;
+  end;
+end;
+
+procedure TfplaMov.btEmContaClick(Sender: TObject);
+begin
+  if not btEmConta.Enabled then exit;
+
+  with TfsinalConta.Create(Self.Owner) do begin
+    edIDUNI.Text:= gvmIDUNI.EditValue;
+    edIDPES.Text:= gvmIDPES.EditValue;
+    edIDEVE.Text:= gvmIDEVE.EditValue;
+    if DM.QYMOV.FieldByName('st_mov').AsString = cMovEmconta then cbSINAL.Tag:= 1 //0 - Agendado, 1 - Em Conta
+    else cbSINAL.Tag:= 0;
+    cbSINAL.ItemIndex:= 1-cbSINAL.Tag;
+
+    //cbSINAL
+    edNRDOC.Value:= gvmNRDOC.EditValue;
+    if DM.qymov.FieldByName('valor').AsFloat > 0 then begin
+      edVLBAS.Font.Color:= corValorC;
+      lbNTREG.Caption:= cDSCRE;
+      lbNTREG.Font.Color:= corValorC;
+    end else begin
+      edVLBAS.Font.Color:= corValorD;
+      lbNTREG.Caption:= cDSDEB;
+      lbNTREG.Font.Color:= corValorD;
+    end;
+
+    edVLBAS.Value:= gvmVALOR.EditValue;
+    edVLAGE.Value:= gvmVALOR.EditValue;
+    edDTAGE.Date:= gvmDTVEN.EditValue;
+    edDTVEN.Date:= DM.proxDiaUtil(gvmDTVEN.EditValue);
+    cbCOMPT.ItemIndex:= 3;
+    edCOMPT.Text:= gvmCOMPT.EditValue;
+    btOK.Enabled:= True;//Precisa mudar para Confirmar
+    if ShowModal = IDOK then begin
+      //vlbas:= edVLBAS.Value;
+      //if DM.QYMOV.FieldByName('nt_reg').AsString = cNTDEB then
+        //vlbas:= -vlbas;
+      DM.DBTRANS.StartTransaction;
+      DM.criaLog(DM.qymov);
+      DM.qymov.Edit;
+
+      if cbSINAl.ItemIndex = 1 then DM.qymov.FieldByName('st_mov').AsString:= cMovEmconta
+      else  DM.qymov.FieldByName('st_mov').AsString:= cMovAgendado;
+      DM.QYMOV.FieldByName('compt').AsString:= edCOMPT.Text;
+      DM.qymov.FieldByName('nr_doc').AsString:= edNRDOC.Value;
+      DM.qymov.FieldByName('vl_bas').AsFloat:= edVLBAS.Value;
+      DM.qymov.FieldByName('dt_ven').AsDateTime:= edDTVEN.Date;
+      DM.qymov.FieldByName('us_alt').AsInteger:= wUSUARIO;
+      DM.qymov.FieldByName('dt_alt').AsDateTime:= now;
+      if cbSINAl.ItemIndex = 1 then DM.adicionaLog(DM.qymov,logEmConta,DM.preparaLog(DM.qymov))
+      else  DM.adicionaLog(DM.qymov,logReaberto,DM.preparaLog(DM.qymov));
+      DM.qymov.post;
+      DM.DBTRANS.Commit;
+      filtra(DM.qymov.FieldByName('id').AsInteger);
+    end;
+    //if cbSINAl.ItemIndex = 1 then edSDPROJ.Value:= edSDPROJ.Value + vlbas
+    //else edSDPROJ.Value:= edSDPROJ.Value - vlbas;
+    Free;
+
+  end;//with
+
+end;
+
+procedure TfplaMov.btEstornarClick(Sender: TObject);
+var
+  obs: string;
+begin
+  if not btEstornar.Enabled then exit;
+
+  if not perguntaNao('Confirma Estorno deste Lançamento?', 'Estorno') then exit;
+  if not perguntaNao('Tem CERTEZA que desja ESTORNAR este Lançamento?', 'Estorno') then exit;
+  obs:= DM.obsBox('Motivo do Estorno', 'Informe por que está Estornando este Lançamento:');
+  with DM.QYMOV do begin
+    DM.DBCON.StartTransaction;
+    Edit;
+    FieldByName('st_mov').AsString:= cMovAgendado;//kSTNOR;
+    //vlefe:= FieldByName('vl_efe').AsFloat;
+    //vlbas:= FieldByName('vl_bas').AsFloat;
+    //if FieldByName('nt_reg').AsString = cNTDEB then begin
+      //vlefe:= -vlefe;
+      //vlbas:= -vlbas;
+    //end;
+    FieldByName('vl_efe').AsVariant:= null;
+    FieldByName('dt_bxa').AsVariant:= null;
+    FieldByName('id_cnt').AsInteger:= cbIDCNT.EditValue;
+    FieldByName('us_efe').AsVariant:= null;
+    FieldByName('dt_efe').AsVariant:= null;
+    DM.adicionaLog(DM.qymov,eEST,obs);
+    Post;
+    DM.DBCON.Commit;
+  end;
+  //edSDATU.Value:= edSDATU.Value - vlefe;
+  //edSDPROJ.Value:= edSDPROJ.Value - vlefe;
+  //if vlbas > 0 then edTOTC.Value:= edTOTC.Value - vlbas
+  //else edTOTD.Value:= edTOTD.Value - vlbas;
+  Filtra(DM.qymov.FieldByName('id').AsInteger);
+  ShowMessage('Estorno do Lançamento realizado!');
+
+end;
+
+procedure TfplaMov.btExcluirClick(Sender: TObject);
+var
+  obs: string;
+begin
+  if not btExcluir.Enabled then exit;
+
+
+  if DM.qymov.RecordCount = 0 then exit;
+
+  if (DM.qyMov.FieldByName('TP_mov').Value <> cTipoAvulso) or
+     (DM.qyMov.FieldByName('st_mov').value = cMovLiquidado) then begin
+    MsgErro('(id' + DM.qyMov.FieldByName('id').AsString + ') Este lançamento não pode ser Excluído!');
+  end;
+
+  if(not perguntaNao(kMsgExc, kModo[3])) then exit;
+  if(not perguntaNao(kMsgExcCtz, kModo[3])) then exit;
+
+  obs:= DM.obsBox('Motivo da Exclusão', 'Informe por que está Excluindo este lançamento:');
+  DM.DBCON.StartTransaction;
+  DM.qyMov.Edit;
+  DM.qyMov.FieldByName('st_fim').AsString:= cSTEXC;
+  DM.qyMov.FieldByName('us_exc').AsInteger:= wUsuario;
+  DM.qyMov.FieldByName('dt_exc').AsDateTime:= Now;
+  DM.adicionaLog(DM.qymov, logExcluido, obs);
+  DM.qyMov.Post;
+  DM.DBCON.Commit;
+  Filtra;
+  ShowMessage('Lançamento Excluído!');
+end;
+
+procedure TfplaMov.btFiltraClick(Sender: TObject);
+begin
+Filtra;
+end;
+
+procedure TfplaMov.Filtra(id: Integer = 0);
+var
+  //st: string;
+  sdant: double;
+  sdefe: double;
+  sdproj: double;
+  totc, totd: double;
+begin
+  if (edDTFIM.EditValue = null) or (edDTINI.EditValue = null) or (cbIDCNT.EditValue = null) then exit;
+
+  DM.qymov.AfterScroll:= nil;
+  DM.qymov.OnCalcFields:= nil;
+  gviewMov.BeginUpdate;
+  DM.QYMOV.Close;
+  DM.qyMov.Filter:= ' (st_fim = ''' + cSTNOR + ''') ';
+  DM.qyMov.Filtered:= True;
+
+  DM.QYMOV.Open('select * from plmovimento ' +
+  ' where ' +
+  '(st_fim = "' + cSTNOR + '") and ' +
+  '(id_cnt = :id1) AND ' +
+  '(tp_mov in ("' + cTipoAvulso + '", "' + cTipoContrato + '", "' + cTipoParcela + '")) AND ' +
+  '(dt_mov BETWEEN :id2 and :id3) '
+  , [cbIDCNT.EditValue, edDTINI.Date, edDTFIM.Date]);
+  //st:= DM.QYMOV.SQl.Text;
+  with DM.qry do begin
+    Open('SELECT IFNULL(SUM(valor), 0) as sd_ant FROM plmovimento WHERE ' +
+                     '(st_fim = "' + cSTNOR + '") and ' +
+                     '(id_cnt = :id1) and ' +
+                     '(tp_mov in ("' + cTipoAvulso + '", "' + cTipoContrato + '", "' + cTipoParcela + '")) and ' +
+                     '(dt_bxa < :id2) and ' +
+                     '(st_mov = "' + cMovLiquidado + '") '
+                     , [cbIDCNT.EditValue, edDTINI.Date]);
+    sdant := fieldbyname('sd_ant').AsFloat;
+    Close;
+  end;
+  edSDANT.Value:= sdant;
+
+  with DM.qry do begin
+    Open('SELECT COALESCE(sum(if(st_mov = "' + cMovLiquidado + '", if(valor>0, valor, 0),0)), 0) as totc, ' +
+                 'COALESCE(sum(if(st_mov = "' + cMovLiquidado + '", if(valor<0, valor, 0),0)), 0) as totd, ' +
+                 'COALESCE(sum(if(st_mov = "' + cMovLiquidado + '", valor, 0))) as sdefe, ' +
+                 'COALESCE(sum(if(st_mov = "' + cMovLiquidado + '" or st_mov = "' + cMovEmConta + '", valor, 0))) as sdproj, ' +
+                 'COALESCE(sum(if(st_mov <> "' + cMovLiquidado + '", valor, 0))) as sdage ' +
+         ' FROM plmovimento WHERE ' +
+         '(st_fim = "' + cSTNOR + '") and ' +
+         '(id_cnt = :id1) AND ' +
+         '(tp_mov in ("' + cTipoAvulso + '", "' + cTipoContrato + '", "' + cTipoParcela + '")) AND ' +
+         '(dt_mov BETWEEN :id2 and :id3) '
+         , [cbIDCNT.EditValue, edDTINI.Date, edDTFIM.Date]);
+{
+    totc := trunc(fieldbyname('totc').AsFloat*100)/100;
+    totd := trunc(fieldbyname('totd').AsFloat*100)/100;
+    sdefe := trunc(fieldbyname('sdefe').AsFloat*100)/100;
+    sdmov := trunc(fieldbyname('sdage').AsFloat*100)/100;
+}
+    totc := fieldbyname('totc').AsFloat;
+    totd := fieldbyname('totd').AsFloat;
+    sdefe := fieldbyname('sdefe').AsFloat;
+    sdproj := fieldbyname('sdproj').AsFloat;
+    //sdmov := fieldbyname('sdage').AsFloat;
+    Close;
+  end;
+  DM.qymov.OnCalcFields:= DM.QYMOVCalcFields;
+  gviewMov.EndUpdate;
+  DM.qymov.AfterScroll:= QYMOVAfterScroll;
+  if id = 0 then gviewMov.DataController.GotoFirst
+  else begin
+    if gviewMov.DataController.LocateByKey(id) then
+      gviewMov.Controller.FocusedRecord.Selected:= true;
+  end;
+  //
+
+  edSDATU.Value:= sdant + sdefe;
+  edSDproj.Value:= sdant + sdproj;
+  //edSDMOV.Value:= sdmov;
+  //edSDEFE.Value:= sdefe;
+
+  edTOTC.Value:= totc;
+  edTOTD.Value:= totd;
+end;
+
+procedure TfplaMov.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  DM.QYMOV.Close();
+  DM.QYMOV.AfterScroll:= nil;
+  DM.qymov.filtered:= false;
+  DM.qymov.filter:= '';
+end;
+
+procedure TfplaMov.btAvulsoClick(Sender: TObject);
+begin
+  DM.qymov.AfterScroll:= nil;
+  DM.qymov.OnCalcFields:= nil;
+  DM.qyCnt.Locate('id', cbIDCNT.EditValue, []);
+  DM.qymov.Tag:= 0;
+  with TflanMov.Create(Self, modoInc, cTipoAvulso, 0, cbIDCNT.EditValue, 0, 0, 0) do begin
+    ShowModal;// = mrOK then
+    Free;
+  end;
+  if DM.qymov.Tag > 0 then begin
+    gridMov.SetFocus;
+    Filtra(DM.qymov.Tag);
+    //DM.qymov.Locate('id', DM.qymov.Tag, []);
+  end else begin
+    DM.qymov.OnCalcFields:= DM.QYMOVCalcFields;
+    DM.qymov.AfterScroll:= QYMOVAfterScroll;
+  end;
+end;
+
+procedure TfplaMov.btParcelaClick(Sender: TObject);
+var
+  st: string;
+  ok: boolean;
+begin
+  DM.qry.Close;
+  DM.QYMOV.AfterScroll:= nil;
+  DM.QYMOV.OnCalcFields:= nil;
+  gviewMov.BeginUpdate();
+  st:= DM.QYMOV.Filter;
+  DM.qyCnt.Locate('id', cbIDCNT.EditValue, []);
+  with TflanParcela.Create(Self, modoInc, 0, 0, -1, cbIDCNT.EditValue) do begin
+    DM.QYMOV.OnCalcFields:= DM.QYMOVCalcFields;
+    ok:= (ShowModal = IDOK);
+    Free;
+  end;
+  gviewMov.EndUpdate;
+  if ok then begin
+    Filtra;
+  end else begin
+    DM.QYMOV.Filter:= st;
+  end;
+  //DM.QYMOV.AfterScroll:= QYMOVAfterScroll;
+
+end;
+
+procedure TfplaMov.btRelDesembolsoClick(Sender: TObject);
+var
+  i, idacum: integer;
+  dia, diaaux: integer;
+  valoracum: double;
+  valor, total: double;
+  totais: array of record
+    dia: integer;
+    valor: double;
+  end;
+  qtlin: integer;
+//  FilterActive: Boolean;
+  AStream: TMemoryStream;
+//  AFilterStream
+begin
+
+  if gviewMov.ViewData.RowCount = 0 then begin
+    MsgErro('Não há Registros para o Desembolso!');
+    Exit;
+  end;
+
+
+  AStream:= TMemoryStream.Create;
+  //AFilterStream:= TMemoryStream.Create;
+  try
+    //AStream.Position:= 0;
+    {
+    gviewMov.DataController.Filter.SaveToStream(AFilterStream);
+
+    gviewMov.DataController.Filter.BeginUpdate;
+    //gviewMov.DataController.Filter.Clear;
+    gviewMov.DataController.Filter.Root.AddItem(gvmVALOR,foLess,0,'0');
+    gviewMov.DataController.Filter.Root.AddItem(gvmSIT,foNotEqual,cMovLiquidado,cMovLiquidado);
+    gviewMov.DataController.Filter.Active:= true;
+    gviewMov.DataController.Filter.EndUpdate;
+    }
+    if gviewMov.ViewData.RowCount > 0 then begin
+      gviewMov.StoreToStream(AStream);
+      gviewMov.BeginUpdate;
+      gviewMov.DataController.ClearSorting(False);
+      gvmDTVEN.SortOrder:= soAscending;
+      gvmIDUNI.SortOrder:= soAscending;
+      gvmIDEVE.SortOrder:= soAscending;
+      gviewMov.EndUpdate;
+
+      frelDesembolso:= TfrelDesembolso.Create(Self.Owner);
+      with frelDesembolso do begin
+        edIDCNT.Text:= cbIDCNT.Text;
+        edDTI.Text:= edDTINI.Text;
+        edDTI.Tag:= MonthOf(edDTINI.Date);
+        edDTF.Text:= edDTFIM.Text;
+        edDTF.Tag:= MonthOf(edDTFIM.Date);
+      end;
+      with frelDesembolso do begin
+
+        gviewDesembolso.DataController.BeginUpdate;
+        valoracum:= 0;//gviewMov.ViewData.Rows[0].values[gvmVALOR.Index];
+        dia:= DayOf(gviewMov.ViewData.Rows[0].Values[gvmDTVEN.Index]);
+        idacum:= 0;
+        total:= 0;
+        qtlin:= gviewMov.ViewData.RecordCount-1;
+        for i := 0 to qtlin do begin
+          diaaux:= DayOf(gviewMov.ViewData.Rows[i].Values[gvmDTVEN.Index]);
+          tbr.Append;
+          tbrIDUNI.AsVariant:= gviewMov.ViewData.Rows[i].Values[gvmIDUNI.Index];
+          tbrIDPES.AsVariant:= gviewMov.ViewData.Rows[i].Values[gvmIDPES.Index];
+          tbrIDEVE.AsVariant:= gviewMov.ViewData.Rows[i].Values[gvmIDEVE.Index];
+          tbrDIA.Value:= diaaux;
+
+          tbrCOMPT.Value:= uppercase(formataMesAno(gviewMov.ViewData.Rows[i].Values[gvmCOMPT.Index]));
+
+          valor:= gviewMov.ViewData.Rows[i].Values[gvmVALOR.Index];
+          total:= total + valor;
+          tbrVALOR.Value:= valor;
+          tbrBANCO.AsVariant:= gviewMov.ViewData.Rows[i].DisplayTexts[gvmBANCO.Index];
+          tbrAgencia.AsVariant:= gviewMov.ViewData.Rows[i].DisplayTexts[gvmAGENCIA.Index];
+          tbrConta.AsVariant:= gviewMov.ViewData.Rows[i].DisplayTexts[gvmCONTA.Index];
+          tbrTipo.AsVariant:= gviewMov.ViewData.Rows[i].DisplayTexts[gvmTIPO.Index];
+
+          tbrTPREG.Value:= 1; //Dados
+          tbr.Post;
+          if (dia <> diaaux) or (i = qtlin)  then begin
+            SetLength(totais, idacum +1);
+            totais[idacum].dia:= dia;
+            if (i = qtlin) then valoracum:= valoracum + valor;
+
+            totais[idacum].valor:= valoracum;
+            valoracum:= 0;
+            dia:= diaaux;
+            idacum := idacum + 1;
+          end;// else begin
+          valoracum:= valoracum + valor;
+          //end;
+        end;
+        tbr.Append;
+        tbrIDEVE.Value:= 'TOTAL';
+        tbrVALOR.Value:= total;
+        tbrTPREG.Value:= 3;//TOTAL
+        tbr.Post;
+
+        tbr.Append;
+        tbrTPREG.Value:= 0;//TOTAL
+        tbr.Post;
+
+        for i := 0 to idacum-1 do begin
+          tbr.Append;
+          tbrDIA.Value:= totais[i].dia;
+          tbrVALOR.Value:= totais[i].valor;
+          tbrTPREG.Value:= 2;//Por Dia
+          tbr.Post;
+        end;
+        tbr.Append;
+        tbrValor.Value:= total;
+        tbrTPREG.Value:= 3;//TOTAL
+        tbr.Post;
+        gviewDesembolso.DataController.EndUpdate;
+        gviewDesembolso.ApplyBestFit();
+        //gvdIDUNI.ApplyBestFit();
+        //gvdIDPES.ApplyBestFit();
+        //gvdIDEVE.ApplyBestFit();
+      end;
+
+      fRelDesembolso.ShowModal;
+      fRelDesembolso.Free;
+
+      AStream.Position:= 0;  //<<<<< Não Esquecer
+      gviewMov.BeginUpdate;
+      gviewMov.RestoreFromStream(AStream);
+      gviewMov.EndUpdate;
+    end else begin //Não há Registros
+      ShowMessage('Relatório de Desembolso não pode ser gerado! Verifique o Filtro.');
+    end;
+    {
+    AFilterStream.Position:= 0;   //<<<<< Não Esquecer
+    gviewMov.DataController.Filter.BeginUpdate;
+    gviewMov.DataController.Filter.LoadFromStream(AFilterStream);
+    gviewMov.DataController.Filter.EndUpdate;
+    }
+  finally
+    FreeAndNil(AStream);
+    //FreeAndNil(AFilterStream);
+  end;
+end;
+
+procedure TfplaMov.btRelContaClick(Sender: TObject);
+var
+  i: integer;
+  vl, saldo, totc, totd: Double;
+  AStream: TMemoryStream;
+begin
+
+  if gviewMov.ViewData.RowCount = 0 then begin
+    MsgErro('Não há Registros para o Relatorio de Movimento de Conta!');
+    Exit;
+  end;
+
+  AStream:= TMemoryStream.Create;
+  try
+    gviewMov.BeginUpdate;
+    gviewMov.StoreToStream(AStream);
+    gviewMov.DataController.ClearSorting(False);
+    gvmDTVEN.SortOrder:= soAscending;
+    gvmIDUNI.SortOrder:= soAscending;
+    gvmIDEVE.SortOrder:= soAscending;
+    gviewMov.EndUpdate;
+
+    fRelConta:= TfRelConta.Create(Self.Owner);
+    with fRelConta do begin
+      edIDCNT.Text:= cbIDCNT.Text;
+      edDTI.Text:= edDTINI.Text;
+      edDTF.Text:= edDTFIM.Text;
+    end;
+    with fRelConta do begin
+      gviewConta.DataController.BeginUpdate;
+
+      totc:= 0;
+      totd:= 0;
+//      linha:= 0;
+      tbR.append;
+      tbrData.value:= edDTINI.Date-1;
+      tbrIDUNI.value:= 'SALDO ANTERIOR';
+      tbrSALDO.value:= edSDANT.Value;
+      tbrTPREG.value:= 2; //Saldo Anterior
+      tbr.post;
+      saldo:= edSDANT.Value;
+
+      for i := 0 to gviewMov.ViewData.RecordCount-1 do begin
+//        linha:= i+ 1;
+        tbr.append;
+        tbrDATA.AsVariant:= gviewMov.ViewData.Rows[i].Values[gvmDTVEN.Index];
+        tbrIDUNI.AsVariant:= gviewMov.ViewData.Rows[i].Values[gvmIDUNI.Index];
+        tbrIDPES.AsVariant:= gviewMov.ViewData.Rows[i].Values[gvmIDPES.Index];
+        tbrHIST.AsVariant:= gviewMov.ViewData.Rows[i].Values[gvmIDEVE.Index];
+        tbrUF.AsVariant:= gviewMov.ViewData.Rows[i].DisplayTexts[gvmUF.Index];
+        tbrNRDOC.AsVariant:= formataNRDOC(gviewMov.ViewData.Rows[i].Values[gvmNRDOC.Index]);
+        vl:= gviewMov.ViewData.Rows[i].Values[gvmVALOR.Index];
+        saldo:= saldo + vl;
+        if vl < 0 then begin
+          tbrVLD.Value:= Abs(vl);
+          totd:= totd + Abs(vl);
+        end;
+        if vl > 0 then begin
+          tbrVLC.Value:= vl;
+          totc:= totc + vl;
+        end;
+        tbrSALDO.Value:= saldo;
+        tbrTPREG.Value:= 1; //Registro Detalhe
+        tbr.Post;
+      end;
+      tbr.Edit;
+      tbrTPREG.Value:= 4;  //Ultima linha, negrito no Saldo
+      tbr.Post;
+      tbr.Append;
+      tbrIDUNI.Value:= 'TOTAIS';
+      tbrVLD.Value:= totd;
+      tbrVLC.Value:= totc;
+      tbrTPREG.Value:= 3;  //Registro Totais
+      tbr.Post;
+
+      gviewConta.DataController.EndUpdate;
+      gviewConta.ApplyBestFit();
+//      gvcIDUNI.ApplyBestFit();
+//      gvcIDPES.ApplyBestFit();
+      if gvcIDPES.Width > 450 then
+        gvcIDPES.Width:= 450;
+//      gvcNRDOC.ApplyBestFit();
+//      gvcHIST.ApplyBestFit();
+    end;
+    fRelConta.ShowModal;
+    fRelConta.Free;
+
+    AStream.Position:= 0; //<<<<Não Esquecer
+    gviewMov.RestoreFromStream(AStream);
+  finally
+    FreeAndNil(AStream);
+  end;
+end;
+
+procedure TfplaMov.edDTFIMPropertiesEditValueChanged(Sender: TObject);
+begin
+Filtra;//btFiltra.Click;
+end;
+
+procedure TfplaMov.edDTINIPropertiesEditValueChanged(Sender: TObject);
+begin
+Filtra;//btFiltra.Click;
+end;
+
+procedure TfplaMov.edSALDOPropertiesChange(Sender: TObject);
+begin
+with TcxCurrencyEdit(Sender) do begin
+  if Value < 0 then Style.Font.Color:= corValorD
+  else Style.Font.Color:= corValorC;
+end;
+
+end;
+
+procedure TfplaMov.efetivaLote;
+var
+  i: integer;
+  qtd: integer;
+  vlt: double;
+  idcnt: integer;
+  dtefe: TDate;
+  lote: string;
+begin
+
+  qtd:= gviewMov.Controller.SelectedRowCount;
+  vlt:= 0;
+  for i := 0 to qtd-1 do begin
+    vlt:= vlt + gviewMov.DataController.Values[gviewMov.Controller.SelectedRows[i].RecordIndex, gvmValor.Index];
+  end;
+
+  dtefe:= 0;
+  idcnt:= -1;
+  fbxaLote:= TfbxaLote.Create(Owner, qtd, vlt, cbidcnt.EditValue);
+  with fbxaLote do begin
+    if ShowModal = idOK then begin
+      idcnt:= fbxaLote.cbIDCNT.EditValue;
+      dtefe:= edDTBXA.Date;
+    end;
+    Free;
+  end;
+
+  if idcnt > 0 then begin
+    DM.qymov.DisableControls;
+    gviewMov.BeginUpdate();
+    gviewMov.DataController.BeginLocate;
+    DM.DBTRANS.StartTransaction;
+    try
+      lote:= formatdatetime('ddmmyyhhNNss', now);
+      with DM.qyMov do begin
+        for i := 0 to qtd-1 do begin
+          if Locate('id',gviewMov.DataController.GetRecordId(gviewMov.Controller.SelectedRows[i].RecordIndex),[]) then begin
+            Edit;
+            FieldByName('st_mov').AsString:= cMovLiquidado;
+            FieldByName('vl_efe').AsFloat:= FieldByName('vl_bas').AsFloat;
+            FieldByName('dt_bxa').AsDateTime:= dtefe;
+            FieldByName('id_cnt').AsInteger:= idcnt;
+            FieldByName('us_efe').AsInteger:= wUsuario;
+            FieldByName('dt_efe').AsDateTime:= Now;
+            DM.adicionaLog(DM.qymov,logEfetivado,'LOTE ' + lote);
+            Post;
+          end else begin
+            MsgErro('1209231108 - ID não localizado: ' + gviewMov.DataController.GetRecordId(gviewMov.Controller.SelectedRows[i].RecordIndex));
+          end;
+        end;
+      end;
+    finally
+      DM.DBTRANS.Commit;
+      gviewMov.DataController.EndLocate;
+      gviewMov.EndUpdate;
+      DM.qymov.EnableControls;
+      Filtra;
+    end;
+  end;
+
+end;
+
+
+procedure TfplaMov.efetivaSimples;
+begin
+
+  if (Date < DM.qymov.FieldByName('dt_ven').AsDateTime) then begin
+    MsgErro('Este documento ainda não pode ser Efetivado! Data do Vencimento: ' +  formataData(DM.qymov.FieldByName('dt_ven').AsDateTime));
+    Exit;
+  end;
+
+  with TfBaixa.Create(Self, DM.QYMOV, cbIDCNT.EditValue) do begin
+    if ShowModal = idOK then begin
+      filtra(DM.qymov.FieldByName('id').AsInteger);
+    end;
+    Free;
+  end;
+
+end;
+
+procedure TfplaMov.FormCreate(Sender: TObject);
+begin
+  DM.carregaConfig();
+
+  with DM do begin
+    qyUNI.Open();
+    qyTPD.Open();
+    qyEVE.Open();
+    qyPes.Open();//'select `id`, `tp_pes`, `id_uni`, `tp_ins`, `nr_ins`, `descr`, `banco`, `agencia`, `nr_conta`, `tp_conta`, `ativo` from tbpessoal');
+    qyTCB.open; //tipo de conta bancaria
+  end;
+
+  edDTINI.Date:= DateOf(StartOfTheMonth(Date));
+  edDTFIM.Date:= DateOf(EndOfTheMonth(Date));
+  if DM.qyCnt.RecordCount > 0 then begin
+    //cbIDCNT.Refresh;
+    cbIDCNT.ItemIndex:= 0; //Aciona rotina de Filtro e Abertura da TABELA
+
+  end;
+
+  edTOTC.Style.Font.Color:= corValorC;
+  edTOTD.Style.Font.Color:= corValorD;
+
+  gviewMov.FilterRow.OperatorCustomization:= true;
+  gvmIDUNI.Options.FilterRowOperator:= foContains;
+  gvmIDEVE.Options.FilterRowOperator:= foContains;
+  gvmIDPES.Options.FilterRowOperator:= foContains;
+  gvmIDTPD.Options.FilterRowOperator:= foContains;
+  gvmDESCR.Options.FilterRowOperator:= foContains;
+  gvmOBS.Options.FilterRowOperator:= foContains;
+  gvmNRDOC.Options.FilterRowOperator:= foContains;
+
+  btAvulso.Enabled:= permitido(110);
+  btParcela.Enabled:= permitido(120);
+  if permitido(131) then btEmConta.Tag:= tagok;
+  if permitido(132) then btEfetivar.tag:= tagok;
+  if permitido(133) then btEstornar.tag:= tagok;
+  if permitido(141) then btAlterar.tag:= tagok;
+  if permitido(142) then btExcluir.tag:= tagok;
+{
+  btEmConta.Enabled:= permitido(131);
+  btEfetivar.Enabled:= permitido(132);
+  btEstornar.Enabled:= permitido(133);
+
+  btAlterar.Enabled:= permitido(141);
+  btExcluir.Enabled:= permitido(142);
+}
+end;
+
+procedure TfplaMov.FormDestroy(Sender: TObject);
+begin
+with DM do begin
+  qyCnt.Close();
+  qyUNI.Close();
+  qyTPD.Close();
+//  qyFER.Close();
+//  qyInv.Close();
+  qyEVE.Close();
+  qyPes.Close();
+  qyTCB.Close; //tipo de conta bancaria
+end;
+end;
+
+procedure TfplaMov.FormShow(Sender: TObject);
+begin
+//  btLanc.Click;
+end;
+
+procedure TfplaMov.gvcSALDOCustomDrawCell(Sender: TcxCustomGridTableView;
+  ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
+  var ADone: Boolean);
+begin
+if AViewInfo.Value < 0 then  ACanvas.Font.Color:= clRed
+else  ACanvas.Font.Color:= clBlue;
+
+end;
+
+procedure TfplaMov.gviewMovColumn10GetDataText(Sender: TcxCustomGridTableItem;
+  ARecordIndex: Integer; var AText: string);
+var
+  AIndex: Integer;
+begin
+  AIndex := TcxGridTableView(Sender.GridView).DataController.GetRowIndexByRecordIndex(ARecordIndex, False);
+  AText := IntToStr(AIndex + 1);
+end;
+
+procedure TfplaMov.gvmSaldoGetDataText(Sender: TcxCustomGridTableItem;
+  ARecordIndex: Integer; var AText: string);
+//var
+//  AIndex: Integer;
+  //rowInfo: TcxRowInfo;
+begin
+{
+//  TcxGridTableView(Sender.GridView).row
+  AIndex := TcxGridTableView(Sender.GridView).DataController.GetRowIndexByRecordIndex(ARecordIndex, False);
+  if AIndex > 0 then begin
+    //rowInfo:= TcxGridTableView(Sender.GridView).DataController.GetRowInfo(AIndex-1);
+    TotalAcumulado:= TotalAcumulado +
+            TcxGridTableView(Sender.GridView).DataController.GetRowValue(TcxGridTableView(Sender.GridView).DataController.GetRowInfo(AIndex) , gcValor.Index);
+    AText:= formataValorDC(TotalAcumulado);
+  end else begin
+    TotalAcumulado:= TcxGridTableView(Sender.GridView).DataController.GetRowValue(TcxGridTableView(Sender.GridView).DataController.GetRowInfo(AIndex) , gcValor.Index);
+    AText:= formataValorDC(TotalAcumulado);
+  end;
+  }
+//  AText := IntToStr(AIndex + 1);
+end;
+
+procedure TfplaMov.gvmSitCustomDrawCell(Sender: TcxCustomGridTableView;
+  ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
+  var ADone: Boolean);
+//var
+  //cor: TColor;
+begin
+  ACanvas.Font.Color:= clBlack;
+  //cor:= ACanvas.Font.Color;
+  if AViewInfo.Value = cMovLiquidado then ACanvas.Brush.Color:= corMovLiquidado
+  else if AViewInfo.Value = cMovEmconta then ACanvas.Brush.Color:= corMovEmconta// TColor($00A5FF)
+  else if AViewInfo.Value = cMovAgendado then ACanvas.Brush.Color:= corMovAgendado;
+  //else ACanvas.Font.Color:= cor;//TColor($0000FF);
+end;
+
+procedure TfplaMov.gviewMovColumn2CustomDrawCell(
+  Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
+  AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+begin
+ACanvas.Brush.Color:= clWhite;
+if AViewInfo.Value = cNTDEB then  ACanvas.Font.Color:= corValorD
+else  ACanvas.Font.Color:= corValorC;
+
+end;
+
+procedure TfplaMov.gviewMovColumn2PropertiesEditValueChanged(
+  Sender: TObject);
+begin
+  with TcxTextEdit(Sender) do begin
+    Text:= soNumero(Text);
+    SelStart:= length(Text);
+  end;
+
+end;
+
+procedure TfplaMov.gviewMovCustomDrawCell(Sender: TcxCustomGridTableView;
+  ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
+  var ADone: Boolean);
+begin
+  if Sender.DataController.GetValue(AViewInfo.GridRecord.RecordIndex, colDTENTREG.Index) <> null then
+    ACanvas.Brush.Color := corDocEntregue;
+
+//ACanvas.Font.Color:= clred;
+end;
+
+procedure TfplaMov.gviewMovDblClick(Sender: TObject);
+var
+  APoint: TPoint;
+  AHitTest: TcxCustomGridHitTest;
+begin
+  GetCursorPos(APoint);
+  with gridMov.FocusedView.Site do
+  begin
+    APoint := ScreenToClient(APoint);
+    AHitTest := ViewInfo.GetHitTest(APoint);
+    if AHitTest is TcxGridRecordCellHitTest then begin
+      if TcxGridRecordCellHitTest(AHitTest).Item.Index = gvmSit.Index then begin
+        if (gvmSit.EditValue = cMovAgendado) or (gvmSit.EditValue = cMovEmConta) then begin //Sinalizar em Conta
+          btEmConta.Click;
+          Exit;
+        end;
+      end;
+
+    end;
+
+    if AHitTest is TcxGridRecordHitTest then begin
+      btAlterar.Click;
+    end;
+  end;
+
+  //if btAltera.Enabled then btAltera.Click;
+//end;
+end;
+
+procedure TfplaMov.gvmNTREGCustomDrawCell(Sender: TcxCustomGridTableView;
+  ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
+  var ADone: Boolean);
+begin
+if AViewInfo.Text = cNTDEB  then ACanvas.Font.Color:= corValorD
+else  ACanvas.Font.Color:= corValorC;
+
+end;
+
+procedure TfplaMov.gvmVALORCustomDrawCell(Sender: TcxCustomGridTableView;
+  ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
+  var ADone: Boolean);
+begin
+
+//if Sender.DataController.DisplayTexts[AViewinfo.GridRecord.RecordIndex, gcNTREG.Index] = 'D' then  ACanvas.Font.Color:= clRed
+ACanvas.Brush.Color:= clWhite;
+if AViewInfo.Value = 0 then  ACanvas.Font.Color:= clBlack
+else if AViewInfo.Value < 0 then  ACanvas.Font.Color:= corValorD
+  else  ACanvas.Font.Color:= corValorC;
+
+//Adone:= true;
+end;
+
+procedure TfplaMov.gvmVALORCustomDrawFooterCell(Sender: TcxGridTableView;
+  ACanvas: TcxCanvas; AViewInfo: TcxGridColumnHeaderViewInfo;
+  var ADone: Boolean);
+var
+  ADrawRect: TRect;
+begin
+  //ACanvas.Brush.Color:= clWhite;
+  ADone:= True;
+  if rightstr(AViewInfo.Text,1) = cNTDEB then  ACanvas.Font.Color:= corValorD
+  else  ACanvas.Font.Color:= corValorC;
+  //ACanvas.DrawComplexFrame(AViewInfo.Bounds,
+  ADrawRect := AViewInfo.Bounds;
+  //ACanvas.FillRect(AViewInfo.Bounds, clYellow);
+  ACanvas.Font.Style:= [fsBold];
+  ACanvas.DrawComplexFrame(ADrawRect, clGray, clGray, cxBordersAll, 1);
+  ACanvas.DrawTexT(AViewInfo.Text+' ', ADrawRect, cxAlignRight or cxAlignVCenter);
+  //ACanvas.DrawTexT(AViewInfo.Text, AViewInfo.Bounds, taRightJustify, taVCenter, False, False);
+end;
+
+procedure TfplaMov.QYMOVAfterScroll(DataSet: TDataSet);
+var
+  liquid: boolean;
+begin
+  liquid:= (DataSet.FieldByName('st_mov').AsString = cMovLiquidado);
+  btEstornar.Enabled:= (liquid) and (btEstornar.Tag = tagok);
+  btAlterar.Enabled:= (not liquid) and (btAlterar.Tag = tagok);
+  btExcluir.Enabled:= (not liquid) and (btExcluir.Tag = tagok);
+  btEfetivar.Enabled:= (not liquid) and (btEfetivar.Tag = tagok);
+  btExcluir.Enabled:= (not liquid) and (DataSet.FieldByName('tp_mov').AsString <> cTipoContrato) and (btExcluir.Tag = tagok);
+  btEmConta.Enabled:= False;
+  if (DataSet.FieldByName('st_mov').AsString = cMovAgendado) then begin
+    btEmConta.Enabled:= True and (btEmConta.Tag = tagok);
+    btEmConta.Caption:= 'Em Conta';
+  end else
+    if (DataSet.FieldByName('st_mov').AsString = cMovEmConta) then begin
+      btEmConta.Enabled:= True and (btEmConta.Tag = tagok);
+      btEmConta.Caption:= 'Agendar';
+    end;
+end;
+
+procedure TfplaMov.cbIDCNTPropertiesEditValueChanged(Sender: TObject);
+begin
+  Filtra;
+end;
+
+end.
+
+
