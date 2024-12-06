@@ -48,7 +48,7 @@ with qry1, DM do begin
   DBTRANS.StartTransaction;
   QYPES.Open();
   qyUNI.Open();
-
+  //ATLL
 
   first;
   while not eof do begin
