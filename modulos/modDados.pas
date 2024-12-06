@@ -260,6 +260,8 @@ begin
   // res.Free;
   // end;
 
+  //Uma alteração para o githun 06/12/2024 09:44
+
   wBDLOCAL := False;  //Mudado para base de dados externa em 06/03/2024 - PADRÃO
 
   globalTbLog := TStringlist.Create;
