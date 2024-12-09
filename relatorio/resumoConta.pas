@@ -234,32 +234,38 @@ procedure TfResumoConta.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   qyRES.Close;
   DM.qyCnt.Close;
+  DM.qyTCB.Close;
 end;
 
 procedure TfResumoConta.FormCreate(Sender: TObject);
 begin
   grMov.Align := alClient;
   DM.qyCnt.Open(DM.sqlTBCNT);
+  DM.qyTCB.open;
   edDTINI.date := DateOf(StartOfTheMonth(date));
   edDTFIM.date := DateOf(EndOfTheMonth(date));
 end;
 
 procedure TfResumoConta.qyRESCalcFields(DataSet: TDataSet);
-var
-  tp: integer;
+//var
+//  tp: integer;
 begin
   DataSet['total'] := DataSet['sd_ant'] + DataSet['vl_rec'] + DataSet['vl_des'];
 
   DataSet['ds_cnt'] := DataSet['cod'] + ' - ' + DataSet['descr'];
 
-    tp := DataSet['tp_conta'];
-
-    if tp = 0 then
-      DataSet['tp_cnt'] := '(CAIXA)'
-    else if tp = 1 then
-      DataSet.FieldByName('tp_cnt').AsString := 'CONTA CORRENTE'
-    else
-      DataSet.FieldByName('tp_cnt').AsString := 'INVESTIMENTO';
+//    tp := DataSet['tp_conta'];
+//    if tp = 0 then
+//      DataSet['tp_cnt'] := '(CAIXA)'
+//    else if tp = 1 then
+//      DataSet.FieldByName('tp_cnt').AsString := 'CONTA CORRENTE'
+//    else if tp = 2 then
+//      DataSet.FieldByName('tp_cnt').AsString := 'INVESTIMENTO'
+//    else
+//      DataSet.FieldByName('tp_cnt').AsString := 'PATRIMONIAL';
+    if DM.qytcb.Locate('id', DataSet['tp_conta'], []) then begin
+      DataSet['tp_cnt']:= DM.qytcb['descr'];
+    end;
 
 end;
 

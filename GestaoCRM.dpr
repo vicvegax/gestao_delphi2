@@ -89,9 +89,10 @@ var
   MutexHandle: THandle;
 
 begin
-  { COLOCAR ALTERAÇÕES AQUI!!!!!!!!!!!!!!!!!!!!!!!!!
-    COLOCAR UPDATES NO GITHUB      *****************************************************  07/03/24
-    AJUSTAR OS UPDATES NO SERVIDOR SOLUÇÃO      ****************************************  07/03/24
+  {
+    * ALTERAR O TIPO DE CONTA NA TAB. DE CONTAS (BD) 2>3 e 3>4
+      (FOI ADICIONADO O TIPO CP) <<<< 09/12/2024
+    * ALTERAR A LOCALIZAÇÃO DO BD <<<< 09/12/2024
   }
 
   wVersao := '0947'; // Informações da Versão de Lançamento

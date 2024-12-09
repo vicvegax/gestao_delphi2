@@ -3,42 +3,59 @@ object fResumoConta: TfResumoConta
   Top = 0
   Align = alClient
   Caption = 'Resumo de Contas'
-  ClientHeight = 638
-  ClientWidth = 923
+  ClientHeight = 798
+  ClientWidth = 1161
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -12
+  Font.Height = -15
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnClose = FormClose
   OnCreate = FormCreate
-  TextHeight = 15
+  PixelsPerInch = 120
+  TextHeight = 20
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 923
-    Height = 41
+    Width = 1161
+    Height = 51
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 917
+    ExplicitWidth = 1155
     object Label1: TLabel
-      Left = 16
-      Top = 16
-      Width = 92
-      Height = 15
+      Left = 20
+      Top = 20
+      Width = 114
+      Height = 20
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Movimento entre'
     end
     object Label2: TLabel
-      Left = 264
-      Top = 8
-      Width = 6
-      Height = 15
+      Left = 330
+      Top = 10
+      Width = 8
+      Height = 20
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'e'
     end
     object edDTINI: TcxDateEdit
-      Left = 144
-      Top = 8
+      Left = 180
+      Top = 10
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Properties.DateButtons = [btnToday]
       Properties.ImmediatePost = True
       Properties.PostPopupValueOnTab = True
@@ -46,11 +63,15 @@ object fResumoConta: TfResumoConta
       Properties.ShowTime = False
       Properties.OnEditValueChanged = edDTINIPropertiesEditValueChanged
       TabOrder = 0
-      Width = 97
+      Width = 121
     end
     object edDTFIM: TcxDateEdit
-      Left = 288
-      Top = 8
+      Left = 360
+      Top = 10
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Properties.DateButtons = [btnToday]
       Properties.ImmediatePost = True
       Properties.PostPopupValueOnTab = True
@@ -58,14 +79,18 @@ object fResumoConta: TfResumoConta
       Properties.ShowTime = False
       Properties.OnEditValueChanged = edDTFIMPropertiesEditValueChanged
       TabOrder = 1
-      Width = 97
+      Width = 121
     end
   end
   object grMov: TcxGrid
-    Left = 88
-    Top = 80
-    Width = 785
-    Height = 510
+    Left = 110
+    Top = 100
+    Width = 981
+    Height = 638
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     TabOrder = 1
     object grMovDBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
@@ -109,8 +134,11 @@ object fResumoConta: TfResumoConta
       DataController.Summary.Options = [soMultipleSelectedRecords]
       Filtering.ColumnPopupMode = fpmExcel
       FilterRow.InfoText = 'Clique aqui para definir Filtros'
+      FilterRow.SeparatorWidth = 8
       FilterRow.ApplyChanges = fracImmediately
       FilterRow.OperatorCustomization = True
+      FixedDataRows.SeparatorWidth = 8
+      NewItemRow.SeparatorWidth = 8
       OptionsData.CancelOnExit = False
       OptionsData.Deleting = False
       OptionsData.DeletingConfirmation = False
@@ -120,47 +148,59 @@ object fResumoConta: TfResumoConta
       OptionsSelection.CheckBoxPosition = cbpIndicator
       OptionsSelection.CheckBoxVisibility = [cbvDataRow, cbvColumnHeader]
       OptionsSelection.ShowCheckBoxesDynamically = True
+      OptionsView.NavigatorOffset = 63
+      OptionsView.FixedColumnSeparatorWidth = 3
       OptionsView.Footer = True
       OptionsView.GroupByBox = False
       OptionsView.HeaderFilterButtonShowMode = fbmButton
       OptionsView.Indicator = True
+      OptionsView.IndicatorWidth = 15
       OptionsView.ShowColumnFilterButtons = sfbAlways
+      Preview.LeftIndent = 25
+      Preview.RightIndent = 6
+      RowLayout.MinValueWidth = 100
       object grMovDBTableView1id_cnt: TcxGridDBColumn
         Caption = 'Conta de Movimento'
         DataBinding.FieldName = 'ds_cnt'
-        Width = 405
+        MinWidth = 25
+        Width = 506
       end
       object grMovDBTableView1Column3: TcxGridDBColumn
         Caption = 'Tipo'
         DataBinding.FieldName = 'tp_cnt'
-        Width = 162
+        MinWidth = 25
+        Width = 203
       end
       object grMovDBTableView1sd_ant: TcxGridDBColumn
         Caption = 'Saldo Anterior'
         DataBinding.FieldName = 'sd_ant'
         OnCustomDrawCell = grMovDBTableView1sd_antCustomDrawCell
-        Width = 110
+        MinWidth = 25
+        Width = 138
         OnCustomDrawFooterCell = grMovDBTableView1sd_antCustomDrawFooterCell
       end
       object grMovDBTableView1saldo: TcxGridDBColumn
         Caption = 'D'#233'bito'
         DataBinding.FieldName = 'vl_des'
         OnCustomDrawCell = grMovDBTableView1saldoCustomDrawCell
-        Width = 110
+        MinWidth = 25
+        Width = 138
         OnCustomDrawFooterCell = grMovDBTableView1saldoCustomDrawFooterCell
       end
       object grMovDBTableView1Column2: TcxGridDBColumn
         Caption = 'Cr'#233'dito'
         DataBinding.FieldName = 'vl_rec'
         OnCustomDrawCell = grMovDBTableView1Column1CustomDrawCell
-        Width = 110
+        MinWidth = 25
+        Width = 138
         OnCustomDrawFooterCell = grMovDBTableView1Column2CustomDrawFooterCell
       end
       object grMovDBTableView1Column1: TcxGridDBColumn
         Caption = 'Saldo'
         DataBinding.FieldName = 'total'
         OnCustomDrawCell = grMovDBTableView1Column1CustomDrawCell
-        Width = 110
+        MinWidth = 25
+        Width = 138
         OnCustomDrawFooterCell = grMovDBTableView1sd_antCustomDrawFooterCell
       end
     end

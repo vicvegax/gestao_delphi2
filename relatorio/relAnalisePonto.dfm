@@ -3,94 +3,131 @@ object frelAnalisePonto: TfrelAnalisePonto
   Top = 0
   Align = alClient
   Caption = 'Relat'#243'rio de An'#225'lise de Ponto (Centro de Custo)'
-  ClientHeight = 498
-  ClientWidth = 1034
+  ClientHeight = 623
+  ClientWidth = 1300
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -12
+  Font.Height = -15
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnClose = FormClose
   OnCreate = FormCreate
-  TextHeight = 15
+  PixelsPerInch = 120
+  TextHeight = 20
   object pnBar: TPanel
     Left = 0
     Top = 0
-    Width = 1034
-    Height = 89
+    Width = 1300
+    Height = 111
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 1028
+    ExplicitWidth = 1294
     object Label5: TLabel
-      Left = 768
-      Top = 40
-      Width = 62
-      Height = 15
+      Left = 960
+      Top = 50
+      Width = 80
+      Height = 20
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Saldo Atual'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -12
+      Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 496
-      Top = 40
-      Width = 74
-      Height = 15
+      Left = 620
+      Top = 50
+      Width = 90
+      Height = 20
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Saldo Anterior'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -12
+      Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = [fsItalic]
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 16
-      Top = 16
-      Width = 32
-      Height = 15
+      Left = 20
+      Top = 20
+      Width = 39
+      Height = 20
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Conta'
     end
     object Label2: TLabel
-      Left = 264
-      Top = 64
-      Width = 6
-      Height = 15
+      Left = 330
+      Top = 80
+      Width = 8
+      Height = 20
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'e'
     end
     object Label1: TLabel
-      Left = 16
-      Top = 64
-      Width = 92
-      Height = 15
+      Left = 20
+      Top = 80
+      Width = 114
+      Height = 20
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Movimento entre'
     end
     object Label7: TLabel
-      Left = 896
-      Top = 40
-      Width = 39
-      Height = 15
+      Left = 1120
+      Top = 50
+      Width = 49
+      Height = 20
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Cr'#233'dito'
       Visible = False
     end
     object Label8: TLabel
-      Left = 1032
-      Top = 40
-      Width = 35
-      Height = 15
+      Left = 1288
+      Top = 50
+      Width = 46
+      Height = 20
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Alignment = taRightJustify
       Caption = 'D'#233'bito'
       Visible = False
     end
     object imgMostra: TImage
-      Left = 968
-      Top = 24
+      Left = 1210
+      Top = 30
       Width = 32
       Height = 32
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       AutoSize = True
       Picture.Data = {
         0D546478536D617274496D61676589504E470D0A1A0A0000000D494844520000
@@ -165,50 +202,74 @@ object frelAnalisePonto: TfrelAnalisePonto
       Visible = False
     end
     object imgSelo: TImage
-      Left = 992
-      Top = 24
-      Width = 219
-      Height = 56
+      Left = 1240
+      Top = 30
+      Width = 274
+      Height = 70
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Proportional = True
       Stretch = True
     end
     object Label6: TLabel
-      Left = 16
-      Top = 36
-      Width = 45
-      Height = 15
+      Left = 20
+      Top = 45
+      Width = 57
+      Height = 20
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Empresa'
     end
     object lbDSEMP: TLabel
-      Left = 72
-      Top = 36
-      Width = 48
-      Height = 15
+      Left = 90
+      Top = 45
+      Width = 61
+      Height = 20
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'lbDSEMP'
     end
     object Label9: TLabel
-      Left = 632
-      Top = 40
-      Width = 90
-      Height = 15
+      Left = 790
+      Top = 50
+      Width = 115
+      Height = 20
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Saldo do Per'#237'odo'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -12
+      Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label10: TLabel
-      Left = 784
-      Top = 16
-      Width = 57
-      Height = 15
+      Left = 980
+      Top = 20
+      Width = 71
+      Height = 20
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = '% Imposto'
     end
     object edSDATU: TcxCurrencyEdit
-      Left = 768
-      Top = 56
+      Left = 960
+      Top = 70
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       TabStop = False
       ParentFont = False
       Properties.Alignment.Horz = taRightJustify
@@ -218,16 +279,20 @@ object frelAnalisePonto: TfrelAnalisePonto
       Properties.OnChange = edTOTCPropertiesChange
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
-      Style.Font.Height = -12
+      Style.Font.Height = -15
       Style.Font.Name = 'Segoe UI'
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       TabOrder = 8
-      Width = 121
+      Width = 151
     end
     object edSDANT: TcxCurrencyEdit
-      Left = 496
-      Top = 56
+      Left = 620
+      Top = 70
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       TabStop = False
       ParentFont = False
       Properties.Alignment.Horz = taRightJustify
@@ -238,26 +303,34 @@ object frelAnalisePonto: TfrelAnalisePonto
       Properties.OnChange = edTOTCPropertiesChange
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
-      Style.Font.Height = -12
+      Style.Font.Height = -15
       Style.Font.Name = 'Segoe UI'
       Style.Font.Style = [fsItalic]
       Style.IsFontAssigned = True
       TabOrder = 7
-      Width = 121
+      Width = 151
     end
     object btFiltra: TButton
-      Left = 400
-      Top = 56
-      Width = 89
-      Height = 25
+      Left = 500
+      Top = 70
+      Width = 111
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Filtrar'
       TabOrder = 5
       Visible = False
       OnClick = btFiltraClick
     end
     object cbIDCNT: TcxLookupComboBox
-      Left = 56
-      Top = 8
+      Left = 70
+      Top = 10
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Properties.CharCase = ecUpperCase
       Properties.DropDownRows = 15
       Properties.ImmediatePost = True
@@ -280,11 +353,15 @@ object frelAnalisePonto: TfrelAnalisePonto
       Properties.OnValidate = cbIDCNTPropertiesValidate
       TabOrder = 0
       OnExit = cbIDCNTExit
-      Width = 481
+      Width = 601
     end
     object edDTFIM: TcxDateEdit
-      Left = 288
-      Top = 56
+      Left = 360
+      Top = 70
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Properties.Alignment.Horz = taRightJustify
       Properties.DateButtons = [btnToday]
       Properties.ImmediatePost = True
@@ -294,11 +371,15 @@ object frelAnalisePonto: TfrelAnalisePonto
       Properties.UseLeftAlignmentOnEditing = False
       Properties.OnEditValueChanged = edDTFIMPropertiesEditValueChanged
       TabOrder = 4
-      Width = 97
+      Width = 121
     end
     object edDTINI: TcxDateEdit
-      Left = 144
-      Top = 56
+      Left = 180
+      Top = 70
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Properties.Alignment.Horz = taRightJustify
       Properties.DateButtons = [btnToday]
       Properties.ImmediatePost = True
@@ -308,11 +389,15 @@ object frelAnalisePonto: TfrelAnalisePonto
       Properties.UseLeftAlignmentOnEditing = False
       Properties.OnEditValueChanged = edDTINIPropertiesEditValueChanged
       TabOrder = 3
-      Width = 97
+      Width = 121
     end
     object edTOTC: TcxCurrencyEdit
-      Left = 896
-      Top = 56
+      Left = 1120
+      Top = 70
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       TabStop = False
       ParentFont = False
       Properties.Alignment.Horz = taRightJustify
@@ -322,11 +407,15 @@ object frelAnalisePonto: TfrelAnalisePonto
       Properties.OnChange = edTOTCPropertiesChange
       TabOrder = 9
       Visible = False
-      Width = 121
+      Width = 151
     end
     object edTOTD: TcxCurrencyEdit
-      Left = 1032
-      Top = 56
+      Left = 1290
+      Top = 70
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       TabStop = False
       ParentFont = False
       Properties.Alignment.Horz = taRightJustify
@@ -336,20 +425,28 @@ object frelAnalisePonto: TfrelAnalisePonto
       Properties.OnChange = edTOTCPropertiesChange
       TabOrder = 10
       Visible = False
-      Width = 121
+      Width = 151
     end
     object pnGuia: TPanel
-      Left = 1008
-      Top = 24
-      Width = 89
-      Height = 41
+      Left = 1260
+      Top = 30
+      Width = 111
+      Height = 51
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Pos. Esquerda do Logo'
       TabOrder = 11
       Visible = False
     end
     object edSDPER: TcxCurrencyEdit
-      Left = 632
-      Top = 56
+      Left = 790
+      Top = 70
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       TabStop = False
       ParentFont = False
       Properties.Alignment.Horz = taRightJustify
@@ -361,19 +458,23 @@ object frelAnalisePonto: TfrelAnalisePonto
       Properties.OnChange = edTOTCPropertiesChange
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
-      Style.Font.Height = -12
+      Style.Font.Height = -15
       Style.Font.Name = 'Segoe UI'
       Style.Font.Style = [fsBold]
       Style.TextStyle = []
       Style.IsFontAssigned = True
       TabOrder = 12
-      Width = 121
+      Width = 151
     end
     object btSEL: TBitBtn
-      Left = 888
-      Top = 8
-      Width = 129
-      Height = 25
+      Left = 1110
+      Top = 10
+      Width = 161
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Selecionar V'#225'rias'
       Enabled = False
       TabOrder = 6
@@ -381,29 +482,41 @@ object frelAnalisePonto: TfrelAnalisePonto
       OnClick = btSELClick
     end
     object chIncRec: TCheckBox
-      Left = 544
-      Top = 16
-      Width = 153
-      Height = 17
+      Left = 680
+      Top = 20
+      Width = 191
+      Height = 21
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Incluir Receita/Comiss'#227'o'
       TabOrder = 1
       OnClick = chIncRecClick
     end
     object edVLI: TvalorEdit
-      Left = 720
-      Top = 10
-      Width = 57
-      Height = 23
+      Left = 900
+      Top = 13
+      Width = 71
+      Height = 28
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       OnExit = edVLIExit
       TabOrder = 2
       Value = 20.000000000000000000
     end
   end
   object tab1: TTabControl
-    Left = 8
-    Top = 104
-    Width = 1025
-    Height = 305
+    Left = 10
+    Top = 130
+    Width = 1281
+    Height = 381
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     TabOrder = 1
     Tabs.Strings = (
       'S'#237'ntetico'
@@ -412,9 +525,13 @@ object frelAnalisePonto: TfrelAnalisePonto
     OnChange = tab1Change
     object grMov: TcxGrid
       Left = 4
-      Top = 26
-      Width = 1017
-      Height = 275
+      Top = 31
+      Width = 1273
+      Height = 346
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Align = alClient
       TabOrder = 0
       object gvMov: TcxGridDBTableView
@@ -487,9 +604,12 @@ object frelAnalisePonto: TfrelAnalisePonto
         DataController.Summary.SummaryGroups = <>
         DataController.Summary.Options = [soMultipleSelectedRecords]
         Filtering.ColumnPopupMode = fpmExcel
+        FilterRow.SeparatorWidth = 8
         FilterRow.Visible = True
         FilterRow.ApplyChanges = fracImmediately
         FilterRow.OperatorCustomization = True
+        FixedDataRows.SeparatorWidth = 8
+        NewItemRow.SeparatorWidth = 8
         OptionsBehavior.FocusCellOnTab = True
         OptionsBehavior.FocusFirstCellOnNewRecord = True
         OptionsBehavior.GoToNextCellOnEnter = True
@@ -503,6 +623,8 @@ object frelAnalisePonto: TfrelAnalisePonto
         OptionsSelection.CheckBoxVisibility = [cbvDataRow, cbvColumnHeader]
         OptionsSelection.HideFocusRectOnExit = False
         OptionsSelection.ShowCheckBoxesDynamically = True
+        OptionsView.NavigatorOffset = 63
+        OptionsView.FixedColumnSeparatorWidth = 3
         OptionsView.Footer = True
         OptionsView.GroupByBox = False
         OptionsView.GroupByHeaderLayout = ghlHorizontal
@@ -510,12 +632,17 @@ object frelAnalisePonto: TfrelAnalisePonto
         OptionsView.GroupFooters = gfAlwaysVisible
         OptionsView.HeaderFilterButtonShowMode = fbmButton
         OptionsView.Indicator = True
+        OptionsView.IndicatorWidth = 15
+        Preview.LeftIndent = 25
+        Preview.RightIndent = 6
+        RowLayout.MinValueWidth = 100
         OnColumnHeaderClick = gvMovColumnHeaderClick
         object gvMovColumn1: TcxGridDBColumn
           Caption = 'N'#250'm.'
           PropertiesClassName = 'TcxTextEditProperties'
           Properties.Alignment.Horz = taRightJustify
           OnGetDataText = gvMovColumn1GetDataText
+          MinWidth = 25
           Options.Editing = False
           Options.IncSearch = False
           Options.Grouping = False
@@ -529,24 +656,27 @@ object frelAnalisePonto: TfrelAnalisePonto
           Properties.CharCase = ecUpperCase
           Visible = False
           GroupIndex = 0
+          MinWidth = 25
           Options.FilterRowOperator = foContains
-          Width = 300
+          Width = 375
         end
         object colPONTO2: TcxGridDBColumn
           Caption = 'Centro de Custo'
           DataBinding.FieldName = 'ponto'
           PropertiesClassName = 'TcxTextEditProperties'
           Properties.CharCase = ecUpperCase
+          MinWidth = 25
           Options.FilterRowOperator = foContains
-          Width = 300
+          Width = 375
         end
         object colEVENTO: TcxGridDBColumn
           Caption = 'Evento'
           DataBinding.FieldName = 'evento'
           PropertiesClassName = 'TcxTextEditProperties'
           Properties.CharCase = ecUpperCase
+          MinWidth = 25
           Options.FilterRowOperator = foContains
-          Width = 300
+          Width = 375
         end
         object colVLD: TcxGridDBColumn
           Caption = 'D'#233'bito'
@@ -556,7 +686,8 @@ object frelAnalisePonto: TfrelAnalisePonto
           Properties.DisplayFormat = ',0.00;,0.00;'
           OnCustomDrawCell = colVLDCustomDrawCell
           OnGetDisplayText = colVLDGetDisplayText
-          Width = 110
+          MinWidth = 25
+          Width = 138
           OnCustomDrawFooterCell = colVLDCustomDrawFooterCell
         end
         object colVLC: TcxGridDBColumn
@@ -567,7 +698,8 @@ object frelAnalisePonto: TfrelAnalisePonto
           Properties.DisplayFormat = ',0.00;,0.00;'
           OnCustomDrawCell = colVLCCustomDrawCell
           OnGetDisplayText = colVLCGetDisplayText
-          Width = 110
+          MinWidth = 25
+          Width = 138
           OnCustomDrawFooterCell = colVLCCustomDrawFooterCell
         end
         object colSALDO: TcxGridDBColumn
@@ -577,19 +709,21 @@ object frelAnalisePonto: TfrelAnalisePonto
           Visible = False
           OnCustomDrawCell = colSALDOCustomDrawCell
           OnGetDisplayText = colSALDOGetDisplayText
+          MinWidth = 25
           Options.Editing = False
           Options.Filtering = False
           Options.Grouping = False
           Options.Moving = False
           Options.Sorting = False
-          Width = 110
+          Width = 138
           OnCustomDrawFooterCell = colSALDOCustomDrawFooterCell
         end
         object gvMovColumn2: TcxGridDBColumn
           Caption = 'Saldo'
           DataBinding.FieldName = 'saldo'
           OnCustomDrawCell = gvMovColumn2CustomDrawCell
-          Width = 110
+          MinWidth = 25
+          Width = 138
           OnCustomDrawFooterCell = gvMovColumn2CustomDrawFooterCell
         end
       end
@@ -600,28 +734,40 @@ object frelAnalisePonto: TfrelAnalisePonto
   end
   object Panel1: TPanel
     Left = 0
-    Top = 452
-    Width = 1034
-    Height = 46
+    Top = 565
+    Width = 1300
+    Height = 58
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alBottom
     TabOrder = 2
-    ExplicitTop = 443
-    ExplicitWidth = 1028
+    ExplicitTop = 564
+    ExplicitWidth = 1294
     object btPDF: TButton
-      Left = 8
-      Top = 8
-      Width = 153
-      Height = 33
+      Left = 10
+      Top = 10
+      Width = 191
+      Height = 41
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Exportar PDF'
       TabOrder = 0
       OnClick = btXLSClick
     end
     object btXLS: TButton
       Tag = 1
-      Left = 168
-      Top = 8
-      Width = 137
-      Height = 33
+      Left = 210
+      Top = 10
+      Width = 171
+      Height = 41
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Exportar Excel'
       TabOrder = 1
       OnClick = btXLSClick

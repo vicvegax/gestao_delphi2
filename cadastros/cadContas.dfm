@@ -3,103 +3,152 @@ object fcadContas: TfcadContas
   Top = 0
   Align = alClient
   Caption = 'Cadastro de Contas'
-  ClientHeight = 525
-  ClientWidth = 784
+  ClientHeight = 656
+  ClientWidth = 988
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -12
+  Font.Height = -15
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
-  TextHeight = 15
+  PixelsPerInch = 120
+  TextHeight = 20
   object Label1: TLabel
     Left = 16
     Top = 64
-    Width = 87
-    Height = 15
+    Width = 108
+    Height = 20
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Nome da Conta:'
   end
   object Label5: TLabel
-    Left = 664
-    Top = 32
-    Width = 33
-    Height = 15
+    Left = 824
+    Top = 24
+    Width = 40
+    Height = 20
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Ident.:'
     Visible = False
   end
   object Label2: TLabel
-    Left = 176
-    Top = 128
-    Width = 43
-    Height = 15
+    Left = 216
+    Top = 144
+    Width = 54
+    Height = 20
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Ag'#234'ncia'
   end
   object Label3: TLabel
-    Left = 288
-    Top = 208
-    Width = 48
-    Height = 15
+    Left = 352
+    Top = 248
+    Width = 60
+    Height = 20
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Situa'#231#227'o:'
   end
   object Label4: TLabel
-    Left = 704
-    Top = 112
-    Width = 70
-    Height = 15
+    Left = 872
+    Top = 120
+    Width = 87
+    Height = 20
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Observa'#231#245'es:'
   end
   object Label6: TLabel
-    Left = 64
-    Top = 152
-    Width = 32
-    Height = 15
-    Caption = 'Conta'
+    Left = 40
+    Top = 176
+    Width = 83
+    Height = 20
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
+    Caption = 'Nr. da Conta'
   end
   object Label7: TLabel
-    Left = 64
-    Top = 128
-    Width = 33
-    Height = 15
+    Left = 72
+    Top = 144
+    Width = 41
+    Height = 20
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Banco'
   end
   object Label8: TLabel
-    Left = 64
-    Top = 32
-    Width = 39
-    Height = 15
+    Left = 72
+    Top = 24
+    Width = 49
+    Height = 20
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'C'#243'digo'
   end
   object Label9: TLabel
     Left = 32
-    Top = 184
-    Width = 77
-    Height = 15
+    Top = 216
+    Width = 97
+    Height = 20
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Alignment = taRightJustify
     Caption = 'Tipo de Conta:'
   end
   object Label10: TLabel
     Left = 24
-    Top = 208
-    Width = 80
-    Height = 15
+    Top = 248
+    Width = 98
+    Height = 20
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Alignment = taRightJustify
     Caption = 'Complemento:'
   end
   object Label11: TLabel
-    Left = 56
-    Top = 96
-    Width = 45
-    Height = 15
+    Left = 64
+    Top = 104
+    Width = 57
+    Height = 20
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'Empresa'
   end
   object gdRec: TDBGrid
     Left = 0
-    Top = 240
-    Width = 784
-    Height = 285
+    Top = 300
+    Width = 988
+    Height = 356
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alBottom
     Anchors = [akLeft, akTop, akRight, akBottom]
     DataSource = dsRec
@@ -108,7 +157,7 @@ object fcadContas: TfcadContas
     TabOrder = 12
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
-    TitleFont.Height = -12
+    TitleFont.Height = -15
     TitleFont.Name = 'Segoe UI'
     TitleFont.Style = []
     OnDblClick = gdRecDblClick
@@ -117,14 +166,14 @@ object fcadContas: TfcadContas
         Expanded = False
         FieldName = 'cod'
         Title.Caption = 'C'#243'd.'
-        Width = 37
+        Width = 46
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'descr'
         Title.Caption = 'Nome da Conta'
-        Width = 332
+        Width = 415
         Visible = True
       end
       item
@@ -133,7 +182,7 @@ object fcadContas: TfcadContas
         FieldName = 'banco'
         Title.Alignment = taRightJustify
         Title.Caption = 'Banco'
-        Width = 40
+        Width = 50
         Visible = True
       end
       item
@@ -142,7 +191,7 @@ object fcadContas: TfcadContas
         FieldName = 'agencia'
         Title.Alignment = taRightJustify
         Title.Caption = 'Ag'#234'ncia'
-        Width = 61
+        Width = 76
         Visible = True
       end
       item
@@ -151,14 +200,14 @@ object fcadContas: TfcadContas
         FieldName = 'nr_conta'
         Title.Alignment = taRightJustify
         Title.Caption = 'Nr. Conta'
-        Width = 91
+        Width = 114
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'tp_conta'
         Title.Caption = 'Tp. Conta'
-        Width = 154
+        Width = 193
         Visible = True
       end
       item
@@ -166,7 +215,7 @@ object fcadContas: TfcadContas
         FieldName = 'tp_descr'
         Title.Caption = 'Complemento'
         Title.Color = 1
-        Width = 117
+        Width = 146
         Visible = True
       end
       item
@@ -178,39 +227,47 @@ object fcadContas: TfcadContas
         Expanded = False
         FieldName = 'calc_nrins'
         Title.Caption = 'CNPJ'
-        Width = 117
+        Width = 146
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'calc_dsemp'
         Title.Caption = 'Empresa'
-        Width = 300
+        Width = 375
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'obs'
         Title.Caption = 'Obs.'
-        Width = 512
+        Width = 640
         Visible = True
       end>
   end
   object edDESCR: TEdit
-    Left = 120
+    Left = 144
     Top = 56
-    Width = 425
-    Height = 23
+    Width = 531
+    Height = 28
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     CharCase = ecUpperCase
     TabOrder = 2
     OnExit = edDESCRExit
     OnKeyPress = edDESCRKeyPress
   end
   object edID: TEdit
-    Left = 704
-    Top = 24
-    Width = 65
-    Height = 23
+    Left = 872
+    Top = 16
+    Width = 81
+    Height = 28
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     TabStop = False
     Alignment = taRightJustify
     ReadOnly = True
@@ -218,20 +275,28 @@ object fcadContas: TfcadContas
     Visible = False
   end
   object edAgencia: TagenciaEdit
-    Left = 232
-    Top = 120
-    Width = 57
-    Height = 23
+    Left = 280
+    Top = 136
+    Width = 71
+    Height = 28
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     OnExit = edAgenciaExit
     OnKeyPress = edProxFocusKeyPress
     TabOrder = 6
     MaxLength = 6
   end
   object cbAtivo: TComboBox
-    Left = 352
-    Top = 200
-    Width = 73
-    Height = 23
+    Left = 432
+    Top = 240
+    Width = 91
+    Height = 28
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Style = csDropDownList
     CharCase = ecUpperCase
     ItemIndex = 1
@@ -243,72 +308,99 @@ object fcadContas: TfcadContas
       'ATIVO')
   end
   object edObs: TMemo
-    Left = 448
-    Top = 128
-    Width = 329
-    Height = 89
+    Left = 552
+    Top = 144
+    Width = 411
+    Height = 111
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     TabOrder = 10
   end
   object edNrConta: TcontaEdit
-    Left = 120
-    Top = 144
-    Width = 113
-    Height = 23
+    Left = 144
+    Top = 168
+    Width = 141
+    Height = 28
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     OnExit = edNrContaExit
     OnKeyPress = edProxFocusKeyPress
     TabOrder = 7
     MaxLength = 20
   end
   object edBanco: TbancoEdit
-    Left = 120
-    Top = 120
-    Width = 41
-    Height = 23
+    Left = 144
+    Top = 136
+    Width = 51
+    Height = 28
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     OnKeyPress = edProxFocusKeyPress
     TabOrder = 5
     MaxLength = 4
   end
   object edCod: TzeroEdit
-    Left = 120
-    Top = 24
-    Width = 41
-    Height = 23
+    Left = 144
+    Top = 16
+    Width = 51
+    Height = 28
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     OnExit = edCodExit
     OnKeyPress = edProxFocusKeyPress
     TabOrder = 0
     MaxLength = 4
   end
   object cbTPCNT: TComboBox
-    Left = 120
-    Top = 176
-    Width = 145
-    Height = 23
+    Left = 144
+    Top = 208
+    Width = 181
+    Height = 28
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Style = csDropDownList
     CharCase = ecUpperCase
-    ItemIndex = 0
     TabOrder = 8
-    Text = '(CAIXA)'
     OnKeyPress = edENTER_KeyPress
     Items.Strings = (
       '(CAIXA)'
       'CONTA CORRENTE'
+      'CONTA POUPAN'#199'A'
       'INVESTIMENTO'
       'PATRIMONIAL')
   end
   object edtpdes: TEdit
-    Left = 120
-    Top = 200
-    Width = 145
-    Height = 23
+    Left = 144
+    Top = 240
+    Width = 181
+    Height = 28
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     CharCase = ecUpperCase
     TabOrder = 9
     OnKeyPress = edENTER_KeyPress
   end
   object edIDEMP: TEdit
-    Left = 120
-    Top = 88
-    Width = 114
-    Height = 23
+    Left = 144
+    Top = 96
+    Width = 143
+    Height = 28
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Alignment = taRightJustify
     TabOrder = 3
     OnChange = edIDEMPChange
@@ -316,8 +408,12 @@ object fcadContas: TfcadContas
     OnKeyPress = edProxFocusKeyPress
   end
   object cbIDEMP: TcxLookupComboBox
-    Left = 240
-    Top = 88
+    Left = 296
+    Top = 96
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Properties.CharCase = ecUpperCase
     Properties.ImmediateDropDownWhenActivated = True
     Properties.IncrementalFilteringOptions = [ifoHighlightSearchText, ifoUseContainsOperator]
@@ -338,20 +434,20 @@ object fcadContas: TfcadContas
     Properties.OnEditValueChanged = cbIDEMPPropertiesEditValueChanged
     TabOrder = 4
     OnKeyPress = edProxFocusKeyPress
-    Width = 385
+    Width = 481
   end
   object dsRec: TDataSource
     AutoEdit = False
     DataSet = qyRec
-    Left = 544
-    Top = 8
+    Left = 536
+    Top = 65528
   end
   object qyRec: TFDQuery
     Connection = DM.DBCON
     SQL.Strings = (
       'select * from tbContas order by cod')
-    Left = 504
-    Top = 8
+    Left = 496
+    Top = 65528
     object qyRecid: TWordField
       AutoGenerateValue = arAutoInc
       FieldName = 'id'
@@ -520,13 +616,13 @@ object fcadContas: TfcadContas
     UpdateOptions.EnableUpdate = False
     SQL.Strings = (
       'select id, cod, nrins, descr from tbempresas limit 1')
-    Left = 632
-    Top = 24
+    Left = 624
+    Top = 8
   end
   object dsemp: TDataSource
     AutoEdit = False
     DataSet = qyemp
-    Left = 680
-    Top = 24
+    Left = 672
+    Top = 8
   end
 end

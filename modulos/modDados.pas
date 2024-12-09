@@ -407,9 +407,10 @@ begin
   Erros_de_Conexao:= Erros_de_Conexao + 1;
   if wUsuario <= 100 then
     ShowMessage('Entrou em modo de recuperação! Tentativa ' + inttostr(Erros_de_Conexao));
-  if Erros_de_Conexao < 3 then begin
+  if Erros_de_Conexao < 2 then begin
     AAction := faRetry;
   end else begin
+    MsgErro('NÃO FOI POSSÍVEL CONECTAR AO BANCO DE DADOS! O SISTEMA SERÁ FINALIZADO.');
     AAction :=  faCloseAbort;
   end;
 end;
@@ -418,7 +419,7 @@ procedure TDM.DBCONRestored(Sender: TObject);
 begin
   Erros_de_Conexao:= 0;
   if wUsuario <= 100 then
-    ShowMessage('Moodo de recuperação concluído!');
+    ShowMessage('Modo de recuperação concluído!');
 
 end;
 
