@@ -95,9 +95,9 @@ begin
     * ALTERAR A LOCALIZAÇÃO DO BD <<<< 09/12/2024
   }
 
-  wVersao := '0947'; // Informações da Versão de Lançamento
+  wVersao := '0951'; // Informações da Versão de Lançamento
   // wDtLanc:= '23/10/2023';   //Mudados para cá em 16/08/2023
-  wDtLanc := '241206'; // Formato mudado para YYMMDD em 23/10/2023
+  wDtLanc := '241210'; // Formato mudado para YYMMDD em 23/10/2023
   ////////////// ATENÇÃOOOOOOO <<<< 17/05/2024
   ///   Problema ao Em Conta em lote na Pl. de Movimento
   ///   Quando a seleção contem datas de dias não úteis(fds) <<<<<<<<< VERIFICAR

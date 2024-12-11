@@ -302,7 +302,8 @@ begin
         Add('Server=127.0.0.1');
         Add('Port=13306');
       end else begin
-        Add('Server=191.252.196.65');
+        //Add('Server=191.252.196.65');  //ANTIGO BD
+        Add('Server=46.202.146.82'); //NOVO BD - APÓS 10/12/2024
         Add('Port=3306');
       end;
       if wModoDev = 0 then
